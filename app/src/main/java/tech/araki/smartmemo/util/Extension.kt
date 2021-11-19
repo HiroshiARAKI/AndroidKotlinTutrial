@@ -12,10 +12,7 @@ import androidx.annotation.IdRes
  */
 fun Activity.hideSoftwareKeyboard(@IdRes viewId: Int) {
     (getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager)
-        .hideSoftInputFromWindow(
-            this.findViewById<View>(viewId).windowToken,
-            0
-        )
+        .hideSoftInputFromWindow(this.findViewById<View>(viewId).windowToken, 0)
 }
 
 /**
