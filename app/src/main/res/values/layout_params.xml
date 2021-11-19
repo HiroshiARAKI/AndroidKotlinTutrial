@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="new_memo_edit_width">250dp</dimen>
+    <dimen name="new_memo_label_width">80dp</dimen>
+    <dimen name="new_memo_contents_height">200dp</dimen>
+</resources>

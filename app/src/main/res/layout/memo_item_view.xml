@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/memo_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Sample Memo Title"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/memo_created_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="作成: 2020.01.01"
+        app:layout_constraintTop_toBottomOf="@id/memo_title"
+        app:layout_constraintEnd_toStartOf="@id/memo_updated_date"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/memo_updated_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="更新: 2020.01.01"
+        app:layout_constraintTop_toBottomOf="@id/memo_title"
+        app:layout_constraintEnd_toStartOf="@id/memo_expired_date"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/memo_expired_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="締切: 2020.01.01"
+        app:layout_constraintTop_toBottomOf="@id/memo_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="5dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
