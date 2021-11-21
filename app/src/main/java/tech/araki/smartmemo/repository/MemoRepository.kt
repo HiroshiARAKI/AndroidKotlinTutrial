@@ -42,6 +42,8 @@ class MemoRepository(context: Context) {
         return memoItems
     }
 
+    fun deleteMemo(id: Int) = dao.deleteMemo(id)
+
     companion object {
         const val DATABASE_NAME = "memo"
     }
