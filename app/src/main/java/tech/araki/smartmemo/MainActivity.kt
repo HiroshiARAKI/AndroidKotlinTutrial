@@ -49,6 +49,11 @@ class MainActivity
         makeToast(this, getString(R.string.new_memo_added_text, memoTitle))
     }
 
+    override fun onUpdate(memo: Memo) {
+        hideSoftwareKeyboard(R.id.main_container)
+        viewModel.updateMemo(memo)
+    }
+
     override fun onDelete(memoTitle: String) {
         hideSoftwareKeyboard(R.id.main_container)
         viewModel.loadMemoItems()

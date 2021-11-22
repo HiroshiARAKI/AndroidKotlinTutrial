@@ -42,7 +42,15 @@ class MemoRepository(context: Context) {
         return memoItems
     }
 
+    /**
+     * メモを削除する
+     */
     fun deleteMemo(id: Int) = dao.deleteMemo(id)
+
+    /**
+     * メモを更新する。
+     */
+    fun updateMemo(memo: Memo) = dao.updateMemo(memo)
 
     companion object {
         const val DATABASE_NAME = "memo"

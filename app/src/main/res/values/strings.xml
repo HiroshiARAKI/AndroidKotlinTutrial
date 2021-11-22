@@ -21,4 +21,5 @@
     <string name="datetime_picker_title">締切日を編集</string>
     <string name="datetime_picker_cancel">キャンセル</string>
     <string name="datetime_picker_update">更新</string>
+    <string name="datetime_fail">破棄日は現在より前の日付は設定できません</string>
 </resources>

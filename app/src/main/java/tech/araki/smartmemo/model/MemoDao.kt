@@ -16,4 +16,7 @@ interface MemoDao {
 
     @Query("DELETE FROM memo WHERE id=:id ")
     fun deleteMemo(id: Int)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateMemo(memo: Memo)
 }
