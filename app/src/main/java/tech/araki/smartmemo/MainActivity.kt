@@ -7,11 +7,13 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import tech.araki.smartmemo.data.Memo
 import tech.araki.smartmemo.util.hideSoftwareKeyboard
 import tech.araki.smartmemo.util.makeToast
 import tech.araki.smartmemo.viewmodel.MainViewModel
 
-class MainActivity : AppCompatActivity(), NewMemoFragment.Listener {
+class MainActivity
+    : AppCompatActivity(), NewMemoFragment.Listener, MemoDetailFragment.Listener {
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity(), NewMemoFragment.Listener {
 
         val recyclerView: RecyclerView = findViewById(R.id.main_list)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = MainAdapter()
+        recyclerView.adapter = MainAdapter(::onItemClick)
         recyclerView.addItemDecoration(
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
@@ -45,5 +47,25 @@ class MainActivity : AppCompatActivity(), NewMemoFragment.Listener {
         hideSoftwareKeyboard(R.id.main_container)
         viewModel.loadMemoItems()
         makeToast(this, getString(R.string.new_memo_added_text, memoTitle))
+    }
+
+    override fun onUpdate(memo: Memo) {
+        hideSoftwareKeyboard(R.id.main_container)
+        viewModel.updateMemo(memo)
+    }
+
+    override fun onDelete(memoTitle: String) {
+        hideSoftwareKeyboard(R.id.main_container)
+        viewModel.loadMemoItems()
+        makeToast(this, getString(R.string.memo_delete_text, memoTitle))
+    }
+
+    // RecyclerViewのアイテムがクリックされたときの処理
+    private fun onItemClick(memo: Memo) {
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.main_container, MemoDetailFragment.newInstance(memo))
+            addToBackStack(null)
+            commit()
+        }
     }
 }

@@ -3,4 +3,7 @@
     <dimen name="new_memo_edit_width">250dp</dimen>
     <dimen name="new_memo_label_width">80dp</dimen>
     <dimen name="new_memo_contents_height">200dp</dimen>
+
+    <dimen name="memo_detail_contents_width">300dp</dimen>
+    <dimen name="memo_detail_contents_height">350dp</dimen>
 </resources>

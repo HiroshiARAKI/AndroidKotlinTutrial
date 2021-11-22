@@ -6,11 +6,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import tech.araki.smartmemo.data.Memo
+import tech.araki.smartmemo.util.TimeUtil.toDateString
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+/**
+ * MainActivityで管理するRecyclerView用のAdapter
+ * @param onItemClick ViewHolderのItemViewをクリックした際の処理
+ */
+class MainAdapter(
+    private val onItemClick: (Memo)-> Unit
+) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     private var memoItems: List<Memo> = emptyList()
 
@@ -31,6 +38,8 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
         holder.createdDate.text = memo.createdTimeMillis.toDateString()
         holder.updatedData.text = memo.updateTimeMillis.toDateString()
         holder.expiredDate.text = memo.expireTimeMillis.toDateString()
+
+        holder.itemView.setOnClickListener { onItemClick(memo) }
     }
 
     override fun getItemCount(): Int = memoItems.size
@@ -47,16 +56,5 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
         val createdDate: TextView = itemView.findViewById(R.id.memo_created_date)
         val updatedData: TextView = itemView.findViewById(R.id.memo_updated_date)
         val expiredDate: TextView = itemView.findViewById(R.id.memo_expired_date)
-    }
-
-    // UNIX epoch time millis to String
-    private fun Long.toDateString() =
-        Instant.ofEpochMilli(this)
-            .atZone(ZoneId.systemDefault())
-            .format(DATE_FORMATTER)
-
-    companion object {
-        private const val DATE_FORMAT = "yyyy/MM/dd"
-        private val DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT)
     }
 }

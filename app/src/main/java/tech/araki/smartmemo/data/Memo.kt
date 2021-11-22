@@ -3,6 +3,7 @@ package tech.araki.smartmemo.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 import java.util.concurrent.TimeUnit
 
 /**
@@ -22,7 +23,7 @@ data class Memo(
     @ColumnInfo(name = CREATED_TIME) val createdTimeMillis: Long,
     @ColumnInfo(name = UPDATE_TIME) val updateTimeMillis: Long,
     @ColumnInfo(name = EXPIRE_TIME) val expireTimeMillis: Long
-) {
+) : Serializable {
     companion object {
         const val TITLE = "title"
         const val CONTENTS = "contents"

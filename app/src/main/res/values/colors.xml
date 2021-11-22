@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="delete">#ffc24f4f</color>
+    <color name="datetime_picker_background">#55194769</color>
 </resources>

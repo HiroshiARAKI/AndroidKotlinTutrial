@@ -10,4 +10,16 @@
     <string name="new_memo_contents_label">内容</string>
     <string name="new_memo_add_button">メモを新規追加</string>
     <string name="new_memo_added_text">「%1$s」を追加しました。</string>
+
+    <!--  MemoDetailFragment  -->
+    <string name="memo_detail_delete_button">削除</string>
+    <string name="memo_detail_date_format">更新日: %1$s</string>
+    <string name="memo_detail_expire_format">締め切り: %1$s</string>
+    <string name="memo_delete_text">「%1$s」を削除しました。</string>
+
+    <!--  DatetimePicker  -->
+    <string name="datetime_picker_title">締切日を編集</string>
+    <string name="datetime_picker_cancel">キャンセル</string>
+    <string name="datetime_picker_update">更新</string>
+    <string name="datetime_fail">破棄日は現在より前の日付は設定できません</string>
 </resources>

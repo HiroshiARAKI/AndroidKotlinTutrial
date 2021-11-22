@@ -31,7 +31,7 @@ class NewMemoFragment : Fragment(R.layout.fragment_new_memo) {
 
         view.findViewById<Button>(R.id.new_memo_add_button).setOnClickListener {
             val title = view.findViewById<EditText>(R.id.new_memo_title).text.toString()
-            val contents = view.findViewById<EditText>(R.id.new_memo_contents).toString()
+            val contents = view.findViewById<EditText>(R.id.new_memo_contents).text.toString()
 
             // タイトルが空ならばエラー処理
             // 本体ならばUI上で何かしら文言を表示するが割愛
