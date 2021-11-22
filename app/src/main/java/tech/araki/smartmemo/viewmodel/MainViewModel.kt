@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import tech.araki.smartmemo.data.Memo
 
 class MainViewModel(app: Application) : MemoViewModel(app) {
