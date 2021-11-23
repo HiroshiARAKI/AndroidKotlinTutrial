@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import tech.araki.smartmemo.data.Memo
+import tech.araki.smartmemo.data.Sort
 
 class MainViewModel(app: Application) : MemoViewModel(app) {
 
@@ -27,5 +28,15 @@ class MainViewModel(app: Application) : MemoViewModel(app) {
     fun updateMemo(memo: Memo) = viewModelScope.launch(Dispatchers.IO) {
         memoRepository.updateMemo(memo)
         _memoItems.postValue(memoRepository.fetchAllMemo())
+    }
+
+    /**
+     * 指定されたソート方法適用する
+     */
+    fun sortBy(sort: Sort) {
+        viewModelScope.launch(Dispatchers.Main) {
+            val items = _memoItems.value ?: return@launch
+            _memoItems.postValue(sort.applyTo(items))
+        }
     }
 }

@@ -27,9 +27,11 @@ class MainActivity
     private val sortAdapterListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             Log.d(this::class.simpleName, "onItemSelected: position=$position, id=$id")
+            viewModel.sortBy(Sort.getById(id))
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {
+            viewModel.sortBy(Sort.ID)
         }
 
     }
