@@ -2,12 +2,18 @@ package tech.araki.smartmemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tech.araki.smartmemo.data.Memo
+import tech.araki.smartmemo.data.Sort
 import tech.araki.smartmemo.util.hideSoftwareKeyboard
 import tech.araki.smartmemo.util.makeToast
 import tech.araki.smartmemo.viewmodel.MainViewModel
@@ -16,6 +22,17 @@ class MainActivity
     : AppCompatActivity(), NewMemoFragment.Listener, MemoDetailFragment.Listener {
 
     private val viewModel: MainViewModel by viewModels()
+
+    // sortSpinnerのアイテムが選択された時の挙動
+    private val sortAdapterListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            Log.d(this::class.simpleName, "onItemSelected: position=$position, id=$id")
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +46,19 @@ class MainActivity
         recyclerView.addItemDecoration(
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
+
+        // ソートのセレクターを作成する
+        // レイアウトは既存のものを使うことにする
+        val sortSpinner: Spinner = findViewById(R.id.sort_spinner)
+        val sortAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
+        sortAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // 全選択肢を追加
+        Sort.values().forEach {
+            sortAdapter.add(getString(it.id))
+        }
+        // Spinnerの設定
+        sortSpinner.adapter = sortAdapter
+        sortSpinner.onItemSelectedListener = sortAdapterListener
 
         addButton.setOnClickListener {
             supportFragmentManager.beginTransaction().run {
