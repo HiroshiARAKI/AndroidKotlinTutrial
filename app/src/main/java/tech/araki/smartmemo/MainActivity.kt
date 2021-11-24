@@ -1,5 +1,6 @@
 package tech.araki.smartmemo
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,13 +21,26 @@ import tech.araki.smartmemo.viewmodel.MainViewModel
 
 class MainActivity
     : AppCompatActivity(), NewMemoFragment.Listener, MemoDetailFragment.Listener {
+    companion object {
+        private const val KEY_PREFERENCES_SORT = "preferences_key_sort"
+    }
 
     private val viewModel: MainViewModel by viewModels()
+
+    // このアプリのPreferences
+    // (NOTE: PreferenceManagerを使った旧来のSharedPreferencesの取得はDeprecated(非推奨)になりました)
+    private val preferences
+        get() = getPreferences(Context.MODE_PRIVATE)
 
     // sortSpinnerのアイテムが選択された時の挙動
     private val sortAdapterListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             Log.d(this::class.simpleName, "onItemSelected: position=$position, id=$id")
+            // SharedPreferencesに選択されているpositionを格納しておく
+            with(preferences.edit()) {
+                putInt(KEY_PREFERENCES_SORT, position)
+                commit()
+            }
             viewModel.sortBy(Sort.getById(id))
         }
 
@@ -61,6 +75,7 @@ class MainActivity
         // Spinnerの設定
         sortSpinner.adapter = sortAdapter
         sortSpinner.onItemSelectedListener = sortAdapterListener
+        sortSpinner.setSelection(preferences.getInt(KEY_PREFERENCES_SORT, 0))
 
         addButton.setOnClickListener {
             supportFragmentManager.beginTransaction().run {
