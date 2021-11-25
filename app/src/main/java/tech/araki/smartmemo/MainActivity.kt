@@ -10,9 +10,12 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import tech.araki.smartmemo.data.Memo
 import tech.araki.smartmemo.data.Sort
 import tech.araki.smartmemo.util.hideSoftwareKeyboard
@@ -36,10 +39,12 @@ class MainActivity
     private val sortAdapterListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             Log.d(this::class.simpleName, "onItemSelected: position=$position, id=$id")
-            // SharedPreferencesに選択されているpositionを格納しておく
-            with(preferences.edit()) {
-                putInt(KEY_PREFERENCES_SORT, position)
-                commit()
+            // SharedPreferencesに選択されているpositionを非同期で格納しておく
+            lifecycleScope.launch(Dispatchers.IO) {
+                with(preferences.edit()) {
+                    putInt(KEY_PREFERENCES_SORT, position)
+                    apply()
+                }
             }
             viewModel.sortBy(Sort.getById(id))
         }
