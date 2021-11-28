@@ -105,7 +105,6 @@ class MainActivity
         viewModel.memoItems.observe(this) {
             (recyclerView.adapter as MainAdapter).setMemoItems(it)
         }
-        viewModel.loadMemoItems()
     }
 
     override fun onDismiss(memoTitle: String) {
