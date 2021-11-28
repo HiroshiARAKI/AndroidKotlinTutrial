@@ -1,6 +1,5 @@
 package tech.araki.smartmemo
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,40 +9,52 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import androidx.activity.viewModels
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import tech.araki.smartmemo.data.Memo
 import tech.araki.smartmemo.data.Sort
+import tech.araki.smartmemo.util.PREFERENCES_KEY_SORT_SETTING
+import tech.araki.smartmemo.util.dataStore
 import tech.araki.smartmemo.util.hideSoftwareKeyboard
 import tech.araki.smartmemo.util.makeToast
 import tech.araki.smartmemo.viewmodel.MainViewModel
+import java.io.IOException
+
 
 class MainActivity
     : AppCompatActivity(), NewMemoFragment.Listener, MemoDetailFragment.Listener {
-    companion object {
-        private const val KEY_PREFERENCES_SORT = "preferences_key_sort"
-    }
 
     private val viewModel: MainViewModel by viewModels()
 
-    // このアプリのPreferences
-    // (NOTE: PreferenceManagerを使った旧来のSharedPreferencesの取得はDeprecated(非推奨)になりました)
-    private val preferences
-        get() = getPreferences(Context.MODE_PRIVATE)
+    // ソート設定に関するFlow
+    private val sortSettingFlow by lazy {
+        dataStore.data
+            .catch { exception ->
+                if (exception is IOException) emit(emptyPreferences())
+                else throw exception
+            }.map { preferences ->
+                preferences[PREFERENCES_KEY_SORT_SETTING] ?: 0  // デフォルトは0にしておく
+            }
+    }
 
     // sortSpinnerのアイテムが選択された時の挙動
     private val sortAdapterListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             Log.d(this::class.simpleName, "onItemSelected: position=$position, id=$id")
-            // SharedPreferencesに選択されているpositionを非同期で格納しておく
+            // DataStoreに、選択されているposition (ID)を非同期で格納しておく
             lifecycleScope.launch(Dispatchers.IO) {
-                with(preferences.edit()) {
-                    putInt(KEY_PREFERENCES_SORT, position)
-                    apply()
+                dataStore.edit { settings ->
+                    settings[PREFERENCES_KEY_SORT_SETTING] = position
                 }
             }
             viewModel.sortBy(Sort.getById(id))
@@ -52,7 +63,6 @@ class MainActivity
         override fun onNothingSelected(parent: AdapterView<*>?) {
             viewModel.sortBy(Sort.ID)
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +90,10 @@ class MainActivity
         // Spinnerの設定
         sortSpinner.adapter = sortAdapter
         sortSpinner.onItemSelectedListener = sortAdapterListener
-        sortSpinner.setSelection(preferences.getInt(KEY_PREFERENCES_SORT, 0))
+        // DataStoreからデータを非同期で取得する
+        lifecycleScope.launch(Dispatchers.Main) {
+            sortSpinner.setSelection(getFirstSortSetting())
+        }
 
         addButton.setOnClickListener {
             supportFragmentManager.beginTransaction().run {
@@ -120,4 +133,9 @@ class MainActivity
             commit()
         }
     }
+
+    // 初期ソート設定を読み込む
+    // NOTE: DataStoreへのアクセスはIOスレッドで行うようにする
+    private suspend fun getFirstSortSetting() =
+        withContext(Dispatchers.IO) { sortSettingFlow.first() }
 }
