@@ -22,4 +22,9 @@
     <string name="datetime_picker_cancel">キャンセル</string>
     <string name="datetime_picker_update">更新</string>
     <string name="datetime_fail">破棄日は現在より前の日付は設定できません</string>
+
+    <!--  MainActivity - SortSelector  -->
+    <string name="sort_id">追加した順</string>
+    <string name="sort_update">更新日が新しい順</string>
+    <string name="sort_expire">締め切り日が近い順</string>
 </resources>
