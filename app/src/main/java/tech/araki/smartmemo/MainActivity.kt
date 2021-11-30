@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import tech.araki.smartmemo.data.Memo
 import tech.araki.smartmemo.data.Sort
+import tech.araki.smartmemo.tool.MemoItemDecoration
 import tech.araki.smartmemo.util.PREFERENCES_KEY_SORT_SETTING
 import tech.araki.smartmemo.util.dataStore
 import tech.araki.smartmemo.util.hideSoftwareKeyboard
@@ -74,9 +75,7 @@ class MainActivity
         val recyclerView: RecyclerView = findViewById(R.id.main_list)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = MainAdapter(::onItemClick)
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        )
+        recyclerView.addItemDecoration(MemoItemDecoration())
 
         // ソートのセレクターを作成する
         // レイアウトは既存のものを使うことにする

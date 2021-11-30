@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@color/main_color">
 
     <TextView
         android:id="@+id/memo_title"
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:text="Sample Memo Title"
+        android:textColor="@color/sub_color"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="5dp"/>
 
@@ -21,6 +23,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:text="作成: 2020.01.01"
+        android:textColor="@color/sub_color"
         app:layout_constraintTop_toBottomOf="@id/memo_title"
         app:layout_constraintEnd_toStartOf="@id/memo_updated_date"
         android:padding="5dp"/>
@@ -31,6 +34,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:text="更新: 2020.01.01"
+        android:textColor="@color/sub_color"
         app:layout_constraintTop_toBottomOf="@id/memo_title"
         app:layout_constraintEnd_toStartOf="@id/memo_expired_date"
         android:padding="5dp"/>
@@ -41,6 +45,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:text="締切: 2020.01.01"
+        android:textColor="@color/sub_color"
         app:layout_constraintTop_toBottomOf="@id/memo_title"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="5dp"/>

@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="main_color">#194769</color>
+    <color name="sub_color">#F6F6E9</color>
+
     <color name="delete">#ffc24f4f</color>
     <color name="datetime_picker_background">#55194769</color>
 </resources>
