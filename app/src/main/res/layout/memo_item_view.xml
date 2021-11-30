@@ -17,15 +17,46 @@
         app:layout_constraintTop_toTopOf="parent"
         android:padding="5dp"/>
 
+    <ImageView
+        android:id="@+id/crate_icon"
+        android:layout_width="15sp"
+        android:layout_height="15sp"
+        android:background="@drawable/create"
+        app:layout_constraintTop_toBottomOf="@id/memo_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/memo_created_date" />
+
+    <ImageView
+        android:id="@+id/update_icon"
+        android:layout_width="15sp"
+        android:layout_height="15sp"
+        android:background="@drawable/update"
+        app:layout_constraintTop_toBottomOf="@id/memo_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/memo_created_date"
+        app:layout_constraintEnd_toStartOf="@id/memo_updated_date" />
+
+    <ImageView
+        android:id="@+id/delete_icon"
+        android:layout_width="15sp"
+        android:layout_height="15sp"
+        android:background="@drawable/delete"
+        app:layout_constraintTop_toBottomOf="@id/memo_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/memo_updated_date"
+        app:layout_constraintEnd_toStartOf="@id/memo_expired_date" />
+
     <TextView
         android:id="@+id/memo_created_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text="作成: 2020.01.01"
+        android:text="2020.01.01"
         android:textColor="@color/sub_color"
         app:layout_constraintTop_toBottomOf="@id/memo_title"
-        app:layout_constraintEnd_toStartOf="@id/memo_updated_date"
+        app:layout_constraintEnd_toStartOf="@id/update_icon"
+        app:layout_constraintStart_toEndOf="@id/crate_icon"
         android:padding="5dp"/>
 
     <TextView
@@ -33,10 +64,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text="更新: 2020.01.01"
+        android:text="2020.01.01"
         android:textColor="@color/sub_color"
         app:layout_constraintTop_toBottomOf="@id/memo_title"
-        app:layout_constraintEnd_toStartOf="@id/memo_expired_date"
+        app:layout_constraintStart_toEndOf="@id/update_icon"
+        app:layout_constraintEnd_toStartOf="@id/delete_icon"
         android:padding="5dp"/>
 
     <TextView
@@ -44,9 +76,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text="締切: 2020.01.01"
+        android:text="2020.01.01"
         android:textColor="@color/sub_color"
         app:layout_constraintTop_toBottomOf="@id/memo_title"
+        app:layout_constraintStart_toEndOf="@id/delete_icon"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="5dp"/>
 
