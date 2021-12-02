@@ -2,6 +2,7 @@ package tech.araki.smartmemo.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Resources
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -10,6 +11,9 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+
+/** dp to px */
+val Int.dp get() = this * Resources.getSystem().displayMetrics.density.toInt()
 
 /**
  * [viewId]上に表示されているソフトウェアキーボードを隠す

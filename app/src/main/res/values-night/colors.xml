@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">@color/deep_blue</color>
+    <color name="sub_color">@color/white</color>
+
+    <color name="list_border_color">@color/black</color>
+
+    <color name="memo_fragment_background">@color/black</color>
+    <color name="memo_fragment_contents_background">@color/dark_gray</color>
+</resources>

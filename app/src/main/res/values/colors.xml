@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="deep_blue">#194769</color>
+    <color name="normal_blue">#335975</color>
+    <color name="light_blue">#7396AF</color>
+    <color name="orange">#C24F4F</color>
+    <color name="light_orange">#BD786C</color>
+    <color name="black">#111111</color>
+    <color name="white">#F6F6E9</color>
+    <color name="dark_gray">#333333</color>
+    <color name="light_gray">#F0F0F0</color>
 
-    <color name="delete">#ffc24f4f</color>
+    <color name="main_color">@color/deep_blue</color>
+    <color name="sub_color">@color/white</color>
+    
+    <color name="list_border_color">@color/light_blue</color>
+
+    <color name="memo_fragment_background">@color/white</color>
+    <color name="memo_fragment_contents_background">@color/light_gray</color>
+
+    <color name="delete">@color/orange</color>
     <color name="datetime_picker_background">#55194769</color>
 </resources>
