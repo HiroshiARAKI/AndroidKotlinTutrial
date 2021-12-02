@@ -1,19 +1,17 @@
 package tech.araki.smartmemo.tool
 
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import tech.araki.smartmemo.R
 import tech.araki.smartmemo.util.dp
 
 class MemoItemDecoration : RecyclerView.ItemDecoration() {
     companion object {
         private val OFFSET_TOP_WIDTH = 5.dp
-        private val BORDER_COLOR = Paint().apply {
-            color = Color.rgb(0xd7, 0xee, 0xf2)
-        }
     }
 
     // 各Viewのオフセットを管理する
@@ -35,12 +33,15 @@ class MemoItemDecoration : RecyclerView.ItemDecoration() {
             val view = parent.getChildAt(position) ?: return  // 描画範囲外であればreturn
 
             // 作成したオフセットに長方形を描画してDividerを作成
+            val color = Paint().apply {
+                color = ContextCompat.getColor(view.context, R.color.list_border_color)
+            }
             c.drawRect(
                 0f,  // left
                 view.y - OFFSET_TOP_WIDTH,  // top
                 parent.width.toFloat(),  // right
                 view.y,  // bottom
-                BORDER_COLOR  // background color
+                color  // background color
             )
         }
     }

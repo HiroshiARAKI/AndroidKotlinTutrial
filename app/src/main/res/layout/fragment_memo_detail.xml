@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F6F6E9"
+    android:background="@color/memo_fragment_background"
     android:clickable="true">
 
     <TextView
@@ -42,7 +41,7 @@
         android:layout_height="@dimen/memo_detail_contents_height"
         android:inputType="textMultiLine"
         android:maxLines="10"
-        android:background="#eeeeee"
+        android:background="@color/memo_fragment_contents_background"
         app:layout_constraintTop_toTopOf="@id/new_memo_guideline_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
