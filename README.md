@@ -4,15 +4,15 @@
 ※ 各回でのコードに対応したリポジトリがあるわけではありません
 
 ## Android Kotlin日本語チュートリアル
-1. [環境構築とAndroid基礎](https://araki.tech/tips/article_135/)
-1. [ライフサイクルとFragment](https://araki.tech/tips/article_211/)
-1. [RecyclerViewでリストを作る](https://araki.tech/tips/article_247/)
-1. [Android推奨アーキテクチャを取り入れる](https://araki.tech/tips/article_344/)
-1. [Roomを使ってデータを管理する](https://araki.tech/tips/article_361/)
-1. [クラス間の依存と再利用性を考える](https://araki.tech/tips/article_437/)
-1. [Fragmentに引数を渡す](https://araki.tech/tips/article_476/)
-1. [Preferencesで環境設定を記憶する](https://araki.tech/tips/article_518/)
-1. [ユーザビリティを向上させる](https://araki.tech/tips/article_613/)
+1. [環境構築とAndroid基礎](https://araki.tech/android/article_135/)
+1. [ライフサイクルとFragment](https://araki.tech/android/article_211/)
+1. [RecyclerViewでリストを作る](https://araki.tech/android/article_247/)
+1. [Android推奨アーキテクチャを取り入れる](https://araki.tech/android/article_344/)
+1. [Roomを使ってデータを管理する](https://araki.tech/android/article_361/)
+1. [クラス間の依存と再利用性を考える](https://araki.tech/android/article_437/)
+1. [Fragmentに引数を渡す](https://araki.tech/android/article_476/)
+1. [Preferencesで環境設定を記憶する](https://araki.tech/android/article_518/)
+1. [ユーザビリティを向上させる](https://araki.tech/android/article_613/)
 
 # Smart Memo
 ## Target SDK & Kotlin version
