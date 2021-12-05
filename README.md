@@ -33,4 +33,4 @@
 # LICENSE
 [MIT LICENSE](LICENSE.txt)
 
-Copyright (c) 2021 Hirsohi ARAKI
+Copyright (c) 2021 Hiroshi ARAKI
