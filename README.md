@@ -15,6 +15,7 @@
 1. [ユーザビリティを向上させる](https://araki.tech/android/article_613/)
 
 # Smart Memo
+![smart_memo](app.png)
 ## Target SDK & Kotlin version
 | target | version | 
 | ---         | --- |
