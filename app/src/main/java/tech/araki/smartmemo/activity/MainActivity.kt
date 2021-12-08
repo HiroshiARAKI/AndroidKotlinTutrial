@@ -1,4 +1,4 @@
-package tech.araki.smartmemo
+package tech.araki.smartmemo.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.activity.viewModels
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +20,12 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import tech.araki.smartmemo.R
+import tech.araki.smartmemo.adapter.MainAdapter
 import tech.araki.smartmemo.data.Memo
 import tech.araki.smartmemo.data.Sort
+import tech.araki.smartmemo.fragment.MemoDetailFragment
+import tech.araki.smartmemo.fragment.NewMemoFragment
 import tech.araki.smartmemo.tool.MemoItemDecoration
 import tech.araki.smartmemo.util.PREFERENCES_KEY_SORT_SETTING
 import tech.araki.smartmemo.util.dataStore

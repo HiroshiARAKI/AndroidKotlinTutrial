@@ -1,4 +1,4 @@
-package tech.araki.smartmemo
+package tech.araki.smartmemo.dialog
 
 import android.app.Dialog
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.widget.TimePicker
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import tech.araki.smartmemo.R
 import tech.araki.smartmemo.util.TimeUtil.toZonedDateTime
 import java.io.Serializable
 import java.time.ZonedDateTime
@@ -80,7 +81,7 @@ class DatetimePicker : DialogFragment() {
         private const val KEY_TIME_MILLIS = "time_millis"
         private const val KEY_LISTENER = "listener"
 
-        fun newInstance(timeMillis: Long, listener: DatetimePicker.Listener): DatetimePicker {
+        fun newInstance(timeMillis: Long, listener: Listener): DatetimePicker {
             return DatetimePicker().apply {
                 arguments = bundleOf(
                     KEY_TIME_MILLIS to timeMillis,

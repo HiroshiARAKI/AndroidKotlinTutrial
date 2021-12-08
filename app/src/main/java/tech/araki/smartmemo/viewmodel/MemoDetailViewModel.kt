@@ -6,8 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import tech.araki.smartmemo.DatetimePicker
+import tech.araki.smartmemo.dialog.DatetimePicker
 import tech.araki.smartmemo.data.Memo
 import tech.araki.smartmemo.util.TimeUtil.toZonedDateTime
 

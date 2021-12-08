@@ -1,4 +1,4 @@
-package tech.araki.smartmemo
+package tech.araki.smartmemo.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import tech.araki.smartmemo.dialog.DatetimePicker
+import tech.araki.smartmemo.R
 import tech.araki.smartmemo.data.Memo
 import tech.araki.smartmemo.util.TimeUtil.toDatetimeString
 import tech.araki.smartmemo.util.makeToast

@@ -1,4 +1,4 @@
-package tech.araki.smartmemo
+package tech.araki.smartmemo.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import tech.araki.smartmemo.R
 import tech.araki.smartmemo.viewmodel.NewMemoViewModel
 import java.lang.ClassCastException
 
