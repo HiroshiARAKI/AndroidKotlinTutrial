@@ -13,6 +13,7 @@
 1. [Fragmentに引数を渡す](https://araki.tech/android/article_476/)
 1. [Preferencesで環境設定を記憶する](https://araki.tech/android/article_518/)
 1. [ユーザビリティを向上させる](https://araki.tech/android/article_613/)
+1. [【番外編】単体テストを書いてみる](https://araki.tech/android/article_692/)
 
 # Smart Memo
 ![smart_memo](app.png)
